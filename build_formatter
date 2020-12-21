@@ -1,0 +1,8 @@
+#!/bin/bash
+# build_formatter
+
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )";
+cd "$script_dir" && cd ./shtelim-rs && cargo build -q;
+cp "$script_dir"/shtelim-rs/target/debug/shtelim-rs "$script_dir"/shtelim_format;
+chmod +x "$script_dir"/shtelim-rs;
+
