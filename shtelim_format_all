@@ -1,0 +1,31 @@
+#!/bin/bash
+# shtelim_format_all
+
+# iterate through all .txt files in dir
+for file in *.txt
+do
+	# format file and save
+	shtelim_format "$file";
+	# if txt directory does not exist, create
+	if [ ! -d ./txt ]
+	then
+		mkdir ./txt;
+	fi
+	# move original to txt dir
+	mv "$file" ./txt/;
+done
+
+# iterate through all .shtelim files in dir
+for file in *.shtelim
+do
+	# get year/month from file name
+	let yyyymm=${file:0:6};
+	# if year/month directory does not exist, create
+	if [ ! -d ./"$yyyymm" ]
+	then
+		mkdir "$yyyymm";
+	fi
+	# move .shtelim file to year/month directory
+	mv "$file" "$yyyymm"/;
+done
+
